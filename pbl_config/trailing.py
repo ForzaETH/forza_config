@@ -26,5 +26,5 @@ class TrailingConfig(BaseModel):
 
 
 def load_trailing_config(path: PathLike) -> TrailingConfig:
-    """``trailing_params.yaml`` at ``path``; see ``ConfigTree.trailing``."""
+    """``trailing_params.yaml`` at ``path``."""
     return load_model(TrailingConfig, path)

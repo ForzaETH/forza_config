@@ -61,5 +61,5 @@ class CarConfig(BaseModel):
 
 
 def load_car_config(path: PathLike) -> CarConfig:
-    """``car_model.yaml`` at ``path``; see ``ConfigTree.car_model`` for the location."""
+    """``car_model.yaml`` at ``path``."""
     return load_model(CarConfig, path)

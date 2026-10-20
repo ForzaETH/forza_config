@@ -36,14 +36,14 @@ class PacejkaTireConfig(BaseModel):
 
 
 def load_pacejka_tire_config(path: PathLike) -> PacejkaTireConfig:
-    """``pacejka/<floor>/default.yaml`` at ``path``; see ``ConfigTree.pacejka``."""
+    """A Pacejka yaml at ``path``, e.g. ``<car>/pacejka/<floor>/default.yaml``."""
     return load_model(PacejkaTireConfig, path)
 
 
 def save_pacejka_tire_config(config: PacejkaTireConfig, folder: PathLike,
                              update_latest: bool = True) -> Path:
     """Write ``folder/archive/<YYYYMMDD>_pacejka.yaml`` and, with ``update_latest``,
-    point ``folder/default.yaml`` at it. ``folder`` is ``ConfigTree.pacejka_dir``."""
+    point ``folder/default.yaml`` at it, e.g. ``folder = <car>/pacejka/<floor>``."""
     def write(path: Path):
         with open(path, "w", encoding="utf-8") as fh:
             yaml.dump(config.model_dump(), fh)

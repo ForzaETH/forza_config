@@ -1,6 +1,6 @@
 # pbl_config
 
-Pydantic schemas and path-based loaders for the ForzaETH car configs. No ROS.
+Pydantic schemas and path-based loaders for the ForzaETH car configs (Python-only, no ROS).
 
 | File | Schema | Load | Save |
 |---|---|---|---|

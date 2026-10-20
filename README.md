@@ -1,4 +1,4 @@
-# pbl_config
+# forza_config
 
 Pydantic schemas and path-based loaders for the ForzaETH car configs (Python-only, no ROS).
 
@@ -21,7 +21,7 @@ a path; every saver takes the folder in which to write the dated file and flip t
 `default.*` symlink:
 
 ```python
-from pbl_config import load_car_config, load_pacejka_tire_config, save_pacejka_tire_config
+from forza_config import load_car_config, load_pacejka_tire_config, save_pacejka_tire_config
 
 car = load_car_config(f"{config_dir}/NUC5/car_model.yaml")
 tire = load_pacejka_tire_config(f"{config_dir}/NUC5/pacejka/dubi/default.yaml")
@@ -52,6 +52,8 @@ def load_pacejka_tire_config_ros(car, floor):   # the "no such floor" message be
 Anything that needs `rclpy`/`rospy` (parameter services, dynamic reconfigure) belongs
 in that layer, not here.
 
+The ROS 2 race stack's layer is `forza_config_ros` (`utilities/libraries/forza_config_ros`).
+
 ## Errors
 
 - `FileNotFoundError`: the file is not there (a wrong floor included).
@@ -62,9 +64,10 @@ in that layer, not here.
 ## Install and test
 
 ```bash
-pip install -e .
+pip install -e .                                          # or build it in a colcon workspace
 pytest                                                    # on a tree built in tmp_path
-PBL_CONFIG_TREE=<stack_master>/config pytest -k real_tree # every car of a real tree
+FORZA_CONFIG_TREE=<stack_master>/config pytest -k real_tree # every car of a real tree
 ```
 
-Python >= 3.8, pydantic 2, pyyaml, numpy.
+Python >= 3.8, pydantic 2, pyyaml, numpy. `package.xml` only lets colcon and rosdep find the package; the metadata is in
+`setup.py` because the ROS humble images pin setuptools 58, which ignores pyproject's `[project]`.

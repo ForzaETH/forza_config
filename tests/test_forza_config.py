@@ -1,5 +1,5 @@
 """Round trips on files written in tmp_path, plus every car of a real tree when
-PBL_CONFIG_TREE points at a <stack_master>/config directory."""
+FORZA_CONFIG_TREE points at a <stack_master>/config directory."""
 import os
 from pathlib import Path
 
@@ -8,7 +8,7 @@ import pytest
 import yaml
 from pydantic import ValidationError
 
-from pbl_config import (CarConfig, PacejkaTireConfig, load_car_config, load_pacejka_tire_config,
+from forza_config import (CarConfig, PacejkaTireConfig, load_car_config, load_pacejka_tire_config,
                         load_steering_lut, load_trailing_config, save_pacejka_tire_config,
                         save_steering_lut, strict_safe_load)
 
@@ -80,9 +80,9 @@ def test_steering_lut_round_trip(tmp_path):
     np.testing.assert_allclose(np.nan_to_num(back), np.nan_to_num(table))
 
 
-@pytest.mark.skipif("PBL_CONFIG_TREE" not in os.environ, reason="set PBL_CONFIG_TREE=<stack_master>/config")
+@pytest.mark.skipif("FORZA_CONFIG_TREE" not in os.environ, reason="set FORZA_CONFIG_TREE=<stack_master>/config")
 def test_real_tree_loads():
-    root = Path(os.environ["PBL_CONFIG_TREE"])
+    root = Path(os.environ["FORZA_CONFIG_TREE"])
     cars = sorted(root.glob("*/car_model.yaml"))
     assert cars, f"no car_model.yaml under {root}"
     for path in cars:

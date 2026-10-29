@@ -15,7 +15,7 @@ from forza_config import (CarConfig, PacejkaTireConfig, load_car_config, load_pa
 CAR = dict(m=3.695, Iz=0.05797, lf=0.170, lr=0.151, wheelbase=0.321, width_m=0.29, h_cg=0.014,
            a_max=3, a_min=-3, v_max=15.0, v_min=-5.0, C_0d=0.48, C_d=-1.1, C_acc=8.29, C_dec=5.77,
            C_R=2.03, C_0v=100, C_v=20, tau_steer=0.15779476, max_steering_angle=0.4189,
-           min_radius_curv_m=0.75, max_steering_velocity=3.2, racecar_version="NUC5")
+           min_radius_curv_m=0.75, max_steering_velocity=3.2)
 TIRE = dict(Bf=4.142, Br=4.8721, Cf=0.4375, Cr=2.1651, Df=2.6476, Dr=1.057, Ef=0.2332, Er=1.692,
             floor="dubi", friction_coeff=1.0)
 TRAILING = dict(allow_accel_trailing=False, trailing_mode=True, prioritize_dyn=True, trailing_gap=2.0,

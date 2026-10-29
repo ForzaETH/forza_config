@@ -56,8 +56,6 @@ class CarConfig(BaseModel):
     """Minimum turning radius in meters (wheelbase / tan(max_steering_angle))"""
     max_steering_velocity: float
     """Maximum Steering Velocity"""
-    racecar_version: str
-    """Name of the car model"""
 
 
 def load_car_config(path: PathLike) -> CarConfig:
